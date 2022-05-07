@@ -98,9 +98,9 @@ public class PlayerMovement : MonoBehaviour {
                 state = STATE_MOVE;
             }
 
-            if (grounded && pos.x < lastPos.x) {
+            if (pos.x < lastPos.x) {
                 spriteRenderer.flipX = true;
-            } else if (grounded && pos.x > lastPos.x){
+            } else if (pos.x > lastPos.x){
                 spriteRenderer.flipX = false;
             }
 
