@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
 
     //Grounded Vars
-    bool grounded = true;
+    bool grounded = false;
 
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -122,13 +122,17 @@ public class PlayerMovement : MonoBehaviour {
             spriteRenderer.sprite = spriteArray[stateSprite[(int) state].startPos + animationFrame];
         }
     }
+
     //Check if Grounded
-    void OnTriggerEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
         grounded = true;
+        Debug.Log("Grounded" + grounded);
     }
-    void OnTriggerExit2D()
+
+    void OnCollisionExit2D(Collision2D collision)
     {
         grounded = false;
+        Debug.Log("Grounded" + grounded);
     }
 }
