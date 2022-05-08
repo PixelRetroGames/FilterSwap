@@ -30,7 +30,7 @@ public class PlatformManager : MonoBehaviour
             }
         }
         Debug.Log("color not found");
-        return Color.black;
+        return Color.white;
     }
 
     // Update is called once per frame
