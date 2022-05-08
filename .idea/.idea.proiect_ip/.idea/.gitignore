@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.proiect_ip.iml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\Mircea\Desktop\proiect_ip\.idea\.idea.proiect_ip\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
