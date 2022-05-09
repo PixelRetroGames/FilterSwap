@@ -16,7 +16,7 @@ public class Filter : MonoBehaviour
     float changeDelayRemaining = 0;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         pm = FindObjectsOfType<PlatformManager>()[0].GetComponent<PlatformManager>();
         sprite = gameObject.GetComponent<SpriteRenderer>();

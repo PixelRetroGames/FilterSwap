@@ -26,11 +26,11 @@ public class PlayerMovement : MonoBehaviour {
         new StateSpriteInfo("fall", 4, 1),
         new StateSpriteInfo("run", 5, 4)
     };
-
     public float speed;
     public float jump;
     float moveVelocity;
     Vector2 lastPos;
+    private Vector2 initialPosition;
 
     public enum States {
         STATE_IDLE = 0,
@@ -49,11 +49,18 @@ public class PlayerMovement : MonoBehaviour {
 
     private SpriteRenderer spriteRenderer;
 
+
+    private SceneManager sceneManager;
+
     //Grounded Vars
     bool grounded = false;
 
-    void Start() {
+    void Start()
+    {
+        initialPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sceneManager = GameObject.FindWithTag("GameController").GetComponent<SceneManager>();
+        
     }
 
     void Update() 
@@ -128,11 +135,51 @@ public class PlayerMovement : MonoBehaviour {
     {
         grounded = true;
         Debug.Log("Grounded" + grounded);
+
+
+        Debug.Log(collision.gameObject.tag);
+
+
+        switch (collision.gameObject.tag) {
+            case "Spike": {
+                sceneManager.showEndScreen(false);
+                break;
+                
+            }
+
+            case "Finish":
+            {
+                sceneManager.showEndScreen(true);
+                break;
+            }
+            
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         grounded = false;
         Debug.Log("Grounded" + grounded);
+        
+        Debug.Log(collision.gameObject.tag);
+    }
+
+    public void reset()
+    {
+        transform.position = initialPosition;
+        GameObject camera = GameObject.FindWithTag("MainCamera");
+        GameObject filter = GameObject.FindWithTag("Filter");
+        
+        camera.transform.parent = transform;
+        filter.transform.parent = transform;
+
+        camera.transform.localPosition = new Vector3(0, 0, -10);
+        filter.transform.localPosition = new Vector3(0, 0, 0.2f);
+        filter.GetComponent<Filter>().Start();
+
+
+
+
+
     }
 }
