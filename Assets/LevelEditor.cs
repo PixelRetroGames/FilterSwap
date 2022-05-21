@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class LevelEditor : MonoBehaviour
 {
-    [SerializeField]
-    public LevelEditorTool[] tools;
+    //[SerializeField]
+    private LevelEditorTool[] tools;
 
     public LevelEditorTool selectedTool;
+    private PlatformManager platformManager;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        PlatformManager platformManager = FindObjectsOfType<PlatformManager>()[0].GetComponent<PlatformManager>();
+        platformManager = FindObjectsOfType<PlatformManager>()[0].GetComponent<PlatformManager>();
+        tools = GetComponentsInChildren<LevelEditorTool>();
         foreach (var tool in tools) {
             tool.SetLinks(platformManager, this);
             tool.Init();
@@ -20,5 +22,6 @@ public class LevelEditor : MonoBehaviour
     public void OnClick() 
     {
         selectedTool.OnClick();
+        platformManager.Start();
     }
 }

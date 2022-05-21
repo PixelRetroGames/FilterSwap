@@ -9,6 +9,7 @@ TagManager:
   - Spike
   - Filter
   - Exit
+  - Default
   layers:
   - Default
   - TransparentFX

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlatformColor : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        spriteRenderer.color = FindObjectsOfType<PlatformManager>()[0].GetComponent<PlatformManager>().GetColor(transform.parent.tag);
+        spriteRenderer.color = FindObjectsOfType<PlatformManager>()[0].GetComponent<PlatformManager>().GetColor(transform.tag);
     }
 
     // Update is called once per frame
