@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jump;
     float moveVelocity;
     Vector2 lastPos;
-    private Vector2 initialPosition;
+    public Vector2 initialPosition;
 
     public enum States {
         STATE_IDLE = 0,
@@ -175,11 +175,6 @@ public class PlayerMovement : MonoBehaviour {
 
         camera.transform.localPosition = new Vector3(0, 0, -10);
         filter.transform.localPosition = new Vector3(0, 0, 0.2f);
-        filter.GetComponent<Filter>().Start();
-
-
-
-
-
+        filter.GetComponent<Filter>().init();
     }
 }

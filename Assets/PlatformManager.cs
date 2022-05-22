@@ -14,6 +14,11 @@ public class PlatformManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        init();
+    }
+
+    public void init()
+    {
         platformsOfColor = new List<GameObject>[colors.Length];
         for (int i = 0; i < colors.Length; i++)
         {

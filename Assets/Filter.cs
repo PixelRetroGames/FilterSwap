@@ -18,6 +18,11 @@ public class Filter : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        init();
+    }
+
+    public void init()
+    {
         pm = FindObjectsOfType<PlatformManager>()[0].GetComponent<PlatformManager>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         Camera cam = Camera.main;
