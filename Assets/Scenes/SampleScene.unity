@@ -323,8 +323,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 190
-    height: 900
+    width: 450
+    height: 1080
   levelEditor: {fileID: 1308910753}
 --- !u!1 &112757267
 GameObject:
