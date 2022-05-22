@@ -7,7 +7,7 @@ public class ColliderResize : MonoBehaviour
     private BoxCollider2D platformCollider;
     private SpriteRenderer spriteRenderer;
 
-    private void Start()
+    public void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         platformCollider = gameObject.GetComponent<BoxCollider2D>();
