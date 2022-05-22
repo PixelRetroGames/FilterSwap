@@ -97,5 +97,7 @@ public class LevelEditorToolSave : MonoBehaviour
         Debug.Log(path);
         
         writeLevel(path, json);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/MenuScene");
     }
 }
