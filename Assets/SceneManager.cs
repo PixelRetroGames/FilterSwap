@@ -143,5 +143,7 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/GameScene");
     }
 
-    
+    public void onBack() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/MenuScene");
+    }
 }
