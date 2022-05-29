@@ -23,12 +23,14 @@ public class PlatformInformation
 [Serializable]
 public class SpikeInformation
 {
-    public SpikeInformation(Vector3 position)
+    public SpikeInformation(Vector3 position, Quaternion rotation)
     {
         this.position = position;
+        this.rotation = rotation;
     }
 
     public Vector3 position;
+    public Quaternion rotation;
 }
 
 [Serializable]

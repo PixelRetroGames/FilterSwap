@@ -88,6 +88,7 @@ public class SceneManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("1");
         LevelObject levelObject = JsonUtility.FromJson<LevelObject>(json);
         
        
@@ -107,7 +108,7 @@ public class SceneManager : MonoBehaviour
         
         foreach (var spike in levelObject.spikes)
         {
-            Instantiate(spikePrefab, spike.position, Quaternion.identity, staticObjects.transform);
+            Instantiate(spikePrefab, spike.position, spike.rotation, staticObjects.transform);
         }
 
         foreach (var exit in levelObject.exits)
@@ -127,23 +128,40 @@ public class SceneManager : MonoBehaviour
         
         startScreen.SetActive(false);
 
+        Debug.Log("2");
     }
 
     public void onRestartGame()
     {
-        // finishScreen.SetActive(false);
-        //
-        // platformManager.SetActive(true);
-        // staticObjects.SetActive(true);
-        // background.SetActive(true);
-        //
-        // player.SetActive(true);
-        // player.GetComponent<PlayerMovement>().reset();
+        finishScreen.SetActive(false);
+        
+        platformManager.SetActive(true);
+        staticObjects.SetActive(true);
+        background.SetActive(true);
+        
+        player.SetActive(true);
+        player.GetComponent<PlayerMovement>().reset();
+    }
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/GameScene");
+    public void onSelectNewLevel() {
+         UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/GameScene");
     }
 
     public void onBack() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/MenuScene");
+    }
+
+    public void onHelp() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/TutorialScene");
+    }
+
+    public void onExit() {
+        #if UNITY_EDITOR
+            // Application.Quit() does not work in the editor so
+            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
