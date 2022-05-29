@@ -84,7 +84,7 @@ public class LevelEditorToolSave : MonoBehaviour
 
         foreach (var spike in spikes)
         {
-            var information = new SpikeInformation(spike.transform.position);
+            var information = new SpikeInformation(spike.transform.position, spike.transform.rotation);
             toSave.spikes.Add(information);
         }
 

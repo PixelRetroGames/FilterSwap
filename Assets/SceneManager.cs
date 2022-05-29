@@ -107,7 +107,7 @@ public class SceneManager : MonoBehaviour
         
         foreach (var spike in levelObject.spikes)
         {
-            Instantiate(spikePrefab, spike.position, Quaternion.identity, staticObjects.transform);
+            Instantiate(spikePrefab, spike.position, spike.rotation, staticObjects.transform);
         }
 
         foreach (var exit in levelObject.exits)

@@ -32,38 +32,20 @@ public class LevelEditorToolRotateSpikes : LevelEditorTool
             rect.height = collider.bounds.size.y;
 
             if (rect.Contains(mousePos)) {
-                var selectedSpriteRenderer = my_object.GetComponent<SpriteRenderer>();
-                var selectedColliderResize = my_object.GetComponent<ColliderResize>();
-                if (selectedSpriteRenderer == null || selectedColliderResize == null) {
-                    break;
-                }
                 selectedObject = my_object;
-                
-                OnRotate();
+                OnRotate(i);
+                my_object = selectedObject;
                 break;
             }
         }
     }
 
-    public void OnRotate() {
-        var objectPosition = selectedObject.transform.position;
-        
-        objectPosition.z = transform.position.z  + (float) 3.6;
-        objectPosition.x = transform.position.x;
-        objectPosition.y = transform.position.y;
-       
-        var clone = selectedObject;
-   
-   
-        clone = Instantiate(prefab,  objectPosition, transform.rotation);
-   
-   
-        var objectRotation = transform.rotation;
-        print(objectRotation.eulerAngles.y);
- 
-        clone.transform.RotateAround(transform.position,Vector3.up,objectRotation.eulerAngles.y);
+    public void OnRotate(int idx) {
 
-        selectedObject = clone;
+        var currentRotation = selectedObject.transform.eulerAngles;
+        currentRotation.z = (currentRotation.z + 90);
+        selectedObject.transform.eulerAngles = currentRotation;
+
         Debug.Log("Rotated!");
     }
 
