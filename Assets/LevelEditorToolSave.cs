@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 public class LevelEditorToolSave : MonoBehaviour
 {
 
+
+    public ErrorReporter errorReporter;
+
     public void Start()
     {
     }
@@ -36,8 +39,14 @@ public class LevelEditorToolSave : MonoBehaviour
         
         LevelObject toSave = new LevelObject();
         
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        toSave.playerStartPosition = player.transform.position;
+        GameObject entrance = GameObject.FindGameObjectWithTag("Entrance");
+
+        if (entrance == null)
+        {
+            errorReporter.reportError("Need an entrance to save!");
+            return;
+        }
+        toSave.playerStartPosition = entrance.transform.position;
 
         
         

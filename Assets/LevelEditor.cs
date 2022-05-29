@@ -6,6 +6,7 @@ public class LevelEditor : MonoBehaviour
     private LevelEditorTool[] tools;
 
     public LevelEditorTool selectedTool;
+    public ErrorReporter errorReporter;
     private PlatformManager platformManager;
 
     // Start is called before the first frame update
@@ -21,7 +22,16 @@ public class LevelEditor : MonoBehaviour
 
     public void OnClick() 
     {
-        selectedTool.OnClick();
+        if (selectedTool == null)
+        {
+            errorReporter.reportError("No tool selected!");
+        }
+        else
+        {
+
+            selectedTool.OnClick();
+        }
+
         platformManager.Start();
     }
 }
