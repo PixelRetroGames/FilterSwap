@@ -18,6 +18,9 @@ public class LevelEditorToolAdd : LevelEditorTool
         if (selectedObject == null) {
             var worldPosition = GetMousePosition(); 
             selectedObject = Instantiate(prefab, worldPosition, Quaternion.identity);
+            if ((selectedObject.tag).Equals("Untagged")) {
+                selectedObject.tag = "Uncolored";
+            }
         } else {
             selectedObject = null;
         }

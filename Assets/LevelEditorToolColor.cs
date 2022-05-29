@@ -25,7 +25,7 @@ public class LevelEditorToolColor : LevelEditorTool
         } 
 
         if (findColor(color) == 1) {
-            return "Default";
+            return "Uncolored";
         }
 
         return platformManager.colors[(findColor(color) + 1) % platformManager.colors.Length];
