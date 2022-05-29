@@ -31,6 +31,7 @@ public class Filter : MonoBehaviour
         transform.localScale = new Vector2(width, height);
         Debug.Log(width + " " + height);
         SetFilterSpriteColor();
+        ApplyFilter();
     }
 
     void SetFilterSpriteColor() {
