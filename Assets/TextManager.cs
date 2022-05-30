@@ -36,10 +36,10 @@ public class TextManager : MonoBehaviour
     }
 
     void UpdateBaseEntries() {
-        string worldsFolder = Application.persistentDataPath;
+        string worldsFolder = Application.dataPath + "/Levels";
         DirectoryInfo d = new DirectoryInfo(worldsFolder);
 
-        foreach (var file in d.GetFiles("base_*")){
+        foreach (var file in d.GetFiles("base_*.json")){
             Debug.Log(file);
 
             string aux = file.FullName;
@@ -63,10 +63,10 @@ public class TextManager : MonoBehaviour
     }
 
     void UpdateCustomEntries() {
-        string worldsFolder = Application.persistentDataPath;
+        string worldsFolder = Application.dataPath + "/Levels";
         DirectoryInfo d = new DirectoryInfo(worldsFolder);
 
-        foreach (var file in d.GetFiles("custom_*")){
+        foreach (var file in d.GetFiles("custom_*.json")){
             Debug.Log(file);
 
             string aux = file.FullName;

@@ -68,19 +68,20 @@ public class SceneManager : MonoBehaviour
         TextMeshProUGUI finishText = finishScreen.GetComponentInChildren<TextMeshProUGUI>();
         Debug.Log(finishText);
         if (won) {
-            finishText.text = "You won";
+            finishText.text = "You won!";
             finishText.color = Color.green;
         } else {
-            finishText.text = "You lost";
+            finishText.text = "You lost!";
             finishText.color = Color.red;
         }
     }
 
     public void onLoadLevel()
     {
-        string levelName = startScreen.GetComponentInChildren<TMP_InputField>().text + ".json";
-        string path = Path.Join(Application.persistentDataPath, levelName);
-
+        string levelName = "levels/" + startScreen.GetComponentInChildren<TMP_InputField>().text + ".json";
+        //string path = Path.Join(Application.persistentDataPath, levelName);
+        string path = Path.Join(Application.dataPath, levelName);
+        Debug.Log(path);
         string json = readLevel(path);
 
         if (json == null)
