@@ -99,9 +99,9 @@ public class LevelEditorToolSave : MonoBehaviour
         String json = JsonUtility.ToJson(toSave);
         
         
-        string levelName = "custom_" + GetComponentInChildren<TMP_InputField>().text + ".json";
+        string levelName = "/Levels/custom_" + GetComponentInChildren<TMP_InputField>().text + ".json";
 
-        string path = Path.Join(Application.persistentDataPath , levelName);
+        string path = Path.Join(Application.dataPath, levelName);
         
         Debug.Log(path);
         
